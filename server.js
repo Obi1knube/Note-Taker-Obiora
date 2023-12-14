@@ -6,7 +6,7 @@ const fs = require('fs');
 
 // Set up the Express.js app
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Middleware to handle JSON data
 app.use(express.json());
@@ -70,3 +70,5 @@ function generateUniqueId() {
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
 });
+
+module.exports = app;
