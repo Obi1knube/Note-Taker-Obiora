@@ -1,6 +1,6 @@
 # 11 Express.js: Note Taker
 
-## Your Task
+## My Task
 
 My assignment is to modify starter code to create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
 
@@ -61,12 +61,14 @@ You haven’t learned how to handle DELETE requests, but this application offers
 * `DELETE /api/notes/:id` should receive a query parameter that contains the id of a note to delete. To delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
 
 ## Review
+I have developed the Minimum Viable Product  of the assigned project. Delete Note Method will be implemented later.
 
-You are required to submit BOTH of the following for review:
+For the review, I have  BOTH of the following:
 
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository, with a unique name and a README describing the project.
+* The URL of the functional, deployed application  on heroku:  https://dashboard.heroku.com/apps/calm-thicket-07664
+  
+* The URL of the GitHub repository: https://github.com/Obi1knube/Note-Taker-Obiora
+  
 
 - - -
 © 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
