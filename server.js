@@ -55,6 +55,9 @@ app.post("/api/notes", (req, res) => {
   });
 });
 
+
+
+
 // Helper function to generate a unique id for a note
 function generateUniqueId() {
   return Math.random().toString(36).substr(2, 9);
@@ -70,9 +73,40 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
+//Add new route for DELETE request by id
+app.delete("/api/notes/:id", (req, res) =>{
+  const noteId = req.params.id;
+
+//Inside the route handler, we read the db.Json file with fs.readFile() method   
+  fs.readFile(path.join(__dirname, "db", "db.json"),"utf8",(err, data) =>{
+    if (err){
+      console.error(err);
+      res.status(500).json({ error: "Internal server error"});
+    }else{
+      const notes =JSON.parse(data);
+      const updatedNotes = notes.filter((note)=> note.id !== noteId);
+
+      //Write the updated notes array back to the db.json file
+      fs.writeFile(
+        path.join(__dirname, "db", "db.json"),
+        JSON.stringify(updatedNotes),    //JSON.strigify is used to convert array to JSON
+        "utf8",
+        (err)=>{
+          if(err){
+            console.error(err);
+            res.status(500).json({error: "Internal server error"});
+          }else{
+            res.json({message: "Note deleted successfully"});
+          }
+        }
+      );
+    }
+  });
+});
+
+
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
 });
-
-//module.exports = app;
